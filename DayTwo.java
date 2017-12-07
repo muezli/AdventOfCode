@@ -1,10 +1,9 @@
 package hu.maz;
-
 /**
  * maz or muezli w/e
  */
-public class DayTwo {
 
+public class DayTwo {
     public static void main(String[] args) {
 //Number of rows in the list and the count of numbers in a row  
 //Can be any number given positive number
@@ -16,7 +15,6 @@ public class DayTwo {
             for (int j = 0; j < length; j++) {
                 spreadSheet[i][j] = (int) (Math.random() * 9 + 1);
             }
-
         }
 //Printing the list for reasons
         DayTwo.Out(length, rows, spreadSheet);
@@ -43,7 +41,6 @@ public class DayTwo {
             }
         }
         System.out.println("\nChecksum is: " + sum);
-
     }
 
     public static void Out(int l, int r, int[][] z) {
