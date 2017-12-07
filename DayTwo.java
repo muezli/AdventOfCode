@@ -4,7 +4,7 @@ package hu.maz;
  * Nothing is called from the package.
  *
  * The base code is an universal solution for randomly generated numbers, however the Division method
- * lacks of exception handling.
+ * most likely will run to an error with random numbers.
  **/
 
 public class DayTwo {
@@ -14,6 +14,8 @@ public class DayTwo {
 //The given list was a 16 by 16 list        
         int rows = 10;
         int length = 4;
+
+//In case of using the given list comment from here until the beginning of the commented list
         int[][] spreadSheet = new int[rows][length];
 //Filling that list with randoms        
         for (int i = 0; i < rows; i++) {
@@ -22,6 +24,8 @@ public class DayTwo {
             }
         }
 /*      The actual list made into an array with some notepad magic
+        Just uncomment it in case
+        
         int[][] spreadSheet = new int[][]{
         {116, 1259, 1045, 679, 1334, 157, 277, 1217, 218, 641, 1089, 136, 247, 1195, 239, 834},
         {269, 1751, 732, 3016, 260, 6440, 5773, 4677, 306, 230, 6928, 7182, 231, 2942, 2738, 3617},
@@ -40,7 +44,9 @@ public class DayTwo {
         {2432, 4030, 3397, 4032, 3952, 2727, 157, 3284, 3450, 3229, 4169, 3471, 4255, 155, 127, 186},
         {919, 615, 335, 816, 138, 97, 881, 790, 855, 89, 451, 789, 423, 108, 95, 116}
         };
+
 */
+        
 //Printing the list for reasons
         DayTwo.Out(length, rows, spreadSheet);
 
@@ -93,8 +99,9 @@ public class DayTwo {
             System.out.println("");
         }
     }
+    
  //Nested loops for looking for the whole divisors
- //With randomly generated numbers it might run to Exception
+ //With randomly generated numbers it might run to error
     public static int[] Division(int[][] a, int r, int l) {
         int[] divi = new int[l];
         for (int i = 0; i < r; i++) {
