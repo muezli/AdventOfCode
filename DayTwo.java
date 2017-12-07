@@ -2,7 +2,7 @@ package hu.maz;
 
 /**
  *
- * @author MAZ
+ * @author MAZ or muezli w/e
  */
 public class DayTwo {
 
