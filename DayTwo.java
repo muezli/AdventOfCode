@@ -3,14 +3,15 @@ package hu.maz;
  * maz or muezli w/e
  * Nothing is called from the package.
  *
- * The base code is an universal solution for randomly generated numbers.
- */
+ * The base code is an universal solution for randomly generated numbers, however the Division method
+ * lacks of exception handling.
+ **/
 
 public class DayTwo {
     public static void main(String[] args) {
 //Number of rows in the list and the count of numbers in a row  
 //Can be any given number positive number
-//For the given list it was a 16 by 16 list        
+//The given list was a 16 by 16 list        
         int rows = 10;
         int length = 4;
         int[][] spreadSheet = new int[rows][length];
@@ -45,7 +46,8 @@ public class DayTwo {
 
         int[] large = new int[rows];
         int[] small = new int[rows];
-//Checking the numbers one by one, it just werks, large[i] could be Integer.MIN_VALUE in case of negative numbers       
+        
+//Checking the numbers one by one, it just werks, large[i] could be Integer.MIN_VALUE in case of negative(?) numbers       
         for (int i = 0; i < rows; i++) {
             large[i] = 0;
             small[i] = Integer.MAX_VALUE;
@@ -54,6 +56,7 @@ public class DayTwo {
                 small[i] = (spreadSheet[i][j] < small[i]) ? small[i] = spreadSheet[i][j] : small[i];
             }
         }
+        
 //Summing the subs and fancy printing
         int sum = 0;
         for (int i = 0; i < rows; i++) {
@@ -65,15 +68,46 @@ public class DayTwo {
             }
         }
         System.out.println("\nChecksum is: " + sum);
+ 
+ //Calling the method for divisor checking and summing the array
+        int[] results = DayTwo.Division(spreadSheet, rows, length);
+        int sumOfResults = 0;
+        for (int i = 0; i < length; i++) {
+            sumOfResults += results[i];
+            if (rows - 1 != i) {
+                System.out.print(results[i]+" + ");
+            } else {
+                System.out.println(results[i] + " = ");
+            }
+        }
+        System.out.print("Checksum of the divison: " + sumOfResults);
+
     }
 
-    public static void Out(int l, int r, int[][] z) {
-//Nested loops for printing the array        
+//Nested loops for printing the array 
+    public static void Out(int l, int r, int[][] z) {       
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < l; j++) {
                 System.out.print(z[i][j] + " ");
             }
             System.out.println("");
         }
+    }
+ //Nested loops for looking for the whole divisors
+ //With randomly generated numbers it might run to Exception
+    public static int[] Division(int[][] a, int r, int l) {
+        int[] divi = new int[l];
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < l; j++) {
+                for (int k = j + 1; k < l; k++) {
+                    if (a[i][j] % a[i][k] == 0) {
+                        divi[i] = a[i][j] / a[i][k];
+                    } else if (a[i][k] % a[i][j] == 0) {
+                        divi[i] = a[i][k] / a[i][j];
+                    }
+                }
+            }
+        }
+        return divi;
     }
 }
