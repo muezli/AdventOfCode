@@ -1,6 +1,7 @@
 package hu.maz;
 /**
  * maz or muezli w/e
+ * Nothing is called from the package.
  */
 
 public class DayTwo {
