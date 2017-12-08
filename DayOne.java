@@ -36,7 +36,6 @@ public class DayOne {
 //Checking if the first and the last digit is the same        
         sum += ((Character.compare(b[0], b[a.length() - 1])) == 0) ? DayOne.Recognise(b[0]) : 0;
         System.out.println("The sum is: " + sum);
-        System.out.println();
 
         int sumc = 0;
         int distance = a.length() / 2 ;
@@ -48,7 +47,6 @@ public class DayOne {
                 //distance = distance-(a.length()-i);
                 sumc += ((Character.compare(b[i], b[i-distance])) == 0) ? DayOne.Recognise(b[i]) : 0;
             }
-
         }
 
         System.out.println("The sum of distanced pairs: " + sumc);
